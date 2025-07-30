@@ -35,7 +35,7 @@ function StatisticsPage() {
       for (const link of shortLinks) {
         const code = link.shortLink.split("/").pop();
         try {
-          const res = await axios.get(`${baseURL}/shorturls/${code}`);
+          const res = await axios.get(`${baseURL}shorturls/${code}`);
           result[code] = res.data;
         } catch {
           result[code] = null;

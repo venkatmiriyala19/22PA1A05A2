@@ -42,6 +42,11 @@ async function log({ stack, level, pkg, message }) {
     throw new Error("Invalid log data: check stack, level, or package values");
   }
 
+  // Truncate message if it's longer than 48 characters
+  if (message.length > 48) {
+    message = message.slice(0, 45) + "...";
+  }
+
   const payload = {
     stack,
     level,

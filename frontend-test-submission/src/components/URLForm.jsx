@@ -37,7 +37,7 @@ export default function URLForm() {
     if (Object.keys(newErrors).length > 0) return;
 
     try {
-      const res = await axios.post(`${baseURL}/shorturls`, {
+      const res = await axios.post(`${baseURL}shorturls`, {
         url,
         validity: validity ? parseInt(validity) : undefined,
         shortcode: shortcode || undefined,
