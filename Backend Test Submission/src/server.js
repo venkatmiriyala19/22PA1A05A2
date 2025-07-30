@@ -2,7 +2,7 @@ const app = require("./app");
 const mongoose = require("mongoose");
 const { log } = require("../../LoggingMiddleware/logger");
 
-const PORT = 9003;
+const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
