@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ShortenerPage />} />
         <Route path="/stats" element={<StatisticsPage />} />
+        <Route path="/stats/:shortcode" element={<StatisticsPage />} />
       </Routes>
     </BrowserRouter>
   );

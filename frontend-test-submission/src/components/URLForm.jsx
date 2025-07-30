@@ -8,6 +8,7 @@ import {
   Stack,
 } from "@mui/material";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const baseURL = process.env.REACT_APP_API_BASE_URL;
 
@@ -17,6 +18,7 @@ export default function URLForm() {
   const [shortcode, setShortcode] = useState("");
   const [result, setResult] = useState(null);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const isValidUrl = (value) => {
     try {
@@ -50,6 +52,13 @@ export default function URLForm() {
       );
     } catch (err) {
       alert(err.response?.data?.message || "Something went wrong");
+    }
+  };
+
+  const handleViewStats = () => {
+    if (result?.shortLink) {
+      const code = result.shortLink.split("/").pop();
+      navigate(`/stats/${code}`);
     }
   };
 
@@ -93,6 +102,9 @@ export default function URLForm() {
               <strong>Expires:</strong>{" "}
               {new Date(result.expiry).toLocaleString()}
             </Typography>
+            <Button variant="outlined" onClick={handleViewStats} sx={{ mt: 2 }}>
+              View Stats
+            </Button>
           </Box>
         )}
       </Stack>
