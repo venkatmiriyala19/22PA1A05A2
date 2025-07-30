@@ -1,3 +1,4 @@
-const { nanoid } = require("nanoid");
-
-module.exports = () => nanoid(6);
+module.exports = async () => {
+  const { nanoid } = await import("nanoid");
+  return nanoid(6);
+};
